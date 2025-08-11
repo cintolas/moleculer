@@ -2,6 +2,7 @@
 
 import * as path from "path";
 import { ServiceBroker } from "../../../";
+import type { ServiceSettingSchema } from "../../../";
 
 const broker = new ServiceBroker({
 	logger: {
@@ -48,12 +49,36 @@ const broker = new ServiceBroker({
 	]
 });
 
+interface LocalMethods {
+	localTest(str: string): string;
+}
+
+interface LocalVars {
+	a: string;
+}
+
+const svc = broker.createService<ServiceSettingSchema, LocalMethods, LocalVars>({
+	name: "local",
+	methods: {
+		localTest(str: string) {
+			return `Hello ${str}`;
+		}
+	},
+	created() {
+		this.a = "World";
+	}
+});
+
 broker.loadService(path.join(__dirname, "greeter.service.ts"));
 broker.loadService(path.join(__dirname, "posts.service.ts"));
 
 (async function() {
 	try {
 		await broker.start();
+
+		const lt = svc.localTest(svc.a);
+		if (lt != "Hello World")
+			throw new Error("Local test failed!");
 
 		await broker.call("v2.posts.list", { limit: 10, sort: "title" });
 		await broker.call("greeter.hello");

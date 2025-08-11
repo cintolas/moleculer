@@ -13,7 +13,7 @@ import type { Middleware, MiddlewareCallHandlerOptions } from "./middleware";
 import type { BulkheadOptions } from "./middlewares";
 import type ServiceRegistry = require("./registry");
 import type { Base as BaseSerializer } from "./serializers";
-import type { ServiceSchema } from "./service";
+import type { ServiceSchema, ServiceSettingSchema } from "./service";
 import type { Tracer, TracerOptions } from "./tracing";
 import type Transit = require("./transit");
 import type { Base as BaseTransporter } from "./transporters";
@@ -448,6 +448,11 @@ declare class ServiceBroker {
 	getLocalService(name: string | ServiceDependency): Service;
 
 	createService(schema: ServiceSchema<any, any, any>, schemaMods?: Partial<ServiceSchema>): Service;
+	createService<TSettings = ServiceSettingSchema,
+		TMethods = Record<string, any>,
+		TVars = Record<string, any>,
+		TThis = Service<TSettings> & TVars & TMethods
+	>(schema: ServiceSchema<TSettings, TMethods, TVars>, schemaMods?: Partial<ServiceSchema>): TThis;
 
 	_restartService(service: Service): Promise<void>;
 
