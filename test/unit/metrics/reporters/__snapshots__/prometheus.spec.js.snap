@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Test Prometheus Reporter class Test generatePrometheusResponse method should call generatePrometheusResponse method but not fetch 1`] = `
 "# HELP test_info Test Info Metric

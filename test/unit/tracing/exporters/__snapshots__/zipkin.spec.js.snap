@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Test Zipkin tracing exporter class Test makePayload should convert errored span to zipkin payload 1`] = `
 {
