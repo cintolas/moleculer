@@ -30,7 +30,8 @@ declare namespace EventCatalog {
 		count: number;
 		hasLocal: boolean;
 		available: boolean;
-		action?: Omit<ActionSchema, "handler" | "remoteHandler" | "service">;
+		group: string;
+		event?: Omit<EventSchema, "handler" | "remoteHandler" | "service">;
 		endpoints?: EventEndpointList[];
 	}
 }

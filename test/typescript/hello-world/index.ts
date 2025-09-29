@@ -76,6 +76,9 @@ broker.loadService(path.join(__dirname, "posts.service.ts"));
 	try {
 		await broker.start();
 
+		//const events = broker.registry.getEventList();
+		//events.forEach(evt => broker.logger.info(`Event: ${evt.name} on ${evt.group}`));
+
 		const lt = svc.localTest(svc.a);
 		if (lt != "Hello World")
 			throw new Error("Local test failed!");
