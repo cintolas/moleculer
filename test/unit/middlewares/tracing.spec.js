@@ -764,20 +764,20 @@ describe("Test TracingMiddleware localAction", () => {
 					rawName: "find",
 					handler
 				};
-				(ctx.params = {
+				ctx.params = {
 					a: 2,
 					b: "John",
 					c: {
 						d: 100,
 						e: true
 					}
-				}),
-					(ctx.meta = {
-						user: {
-							name: "Adam",
-							age: 30
-						}
-					});
+				};
+				ctx.meta = {
+					user: {
+						name: "Adam",
+						age: 30
+					}
+				};
 			});
 
 			it("should create a span with local custom tags function even if global custom tags are specified", async () => {
@@ -1946,20 +1946,20 @@ describe("Test TracingMiddleware localEvent", () => {
 					handler
 				};
 				ctx.tracing = true;
-				(ctx.params = {
+				ctx.params = {
 					a: 2,
 					b: "John",
 					c: {
 						d: 100,
 						e: true
 					}
-				}),
-					(ctx.meta = {
-						user: {
-							name: "Adam",
-							age: 30
-						}
-					});
+				};
+				ctx.meta = {
+					user: {
+						name: "Adam",
+						age: 30
+					}
+				};
 			});
 
 			it("should create a span with local custom tags function even if global custom event tags are specified", async () => {

@@ -440,7 +440,8 @@ describe("Test middleware", () => {
 		cacher
 	});
 
-	(cacher.get = jest.fn(() => Promise.resolve(cachedData))), (cacher.set = jest.fn());
+	cacher.get = jest.fn(() => Promise.resolve(cachedData));
+	cacher.set = jest.fn();
 
 	let mockAction = {
 		name: "posts.find",
