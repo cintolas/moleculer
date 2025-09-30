@@ -83,7 +83,7 @@ jobs:
       working-directory: ./test
 
     - name: Start Kafka
-      run: docker compose up -d zookeeper kafka && sleep 60
+      run: docker compose up -d kafka && sleep 60
       if: ${{ matrix.transporter == 'Kafka' }}
       working-directory: ./test
 
