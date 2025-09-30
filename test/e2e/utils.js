@@ -87,7 +87,7 @@ function waitForNodes(broker, nodes, timeout = 30 * 1000) {
 
 function createNode(nodeID, brokerOpts = {}) {
 	let transporter = process.env.TRANSPORTER || "TCP";
-	if (transporter == "Kafka") transporter = "kafka://localhost:9094";
+	if (transporter == "Kafka") transporter = "kafka://localhost:9093";
 
 	const disableBalancer =
 		process.env.DISABLEBALANCER != null ? process.env.DISABLEBALANCER == "true" : false;
