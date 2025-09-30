@@ -19,7 +19,7 @@ const broker = new ServiceBroker({
 	},
 	*/
 	transporter: "Redis",
-	//transporter: "kafka://localhost:9093",
+	//transporter: "kafka://localhost:9094",
 	//transporter: "amqp://192.168.0.181:5672",
 	//transporter: "AMQP10",
 	//transporter: "NATS",
