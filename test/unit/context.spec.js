@@ -510,13 +510,13 @@ describe("Test setParams", () => {
 		expect(ctx.params).toBe(params2);
 	});
 
-	it("should clone the params", () => {
+	it("should clone the params (object)", () => {
 		let params1 = {
 			a: 1
 		};
 
 		let ctx = new Context();
-		ctx.params1 = params1;
+		ctx.params = params1;
 
 		let params2 = {
 			b: 5
@@ -525,6 +525,67 @@ describe("Test setParams", () => {
 		ctx.setParams(params2, true);
 		expect(ctx.params).not.toBe(params2);
 		expect(ctx.params).toEqual(params2);
+	});
+
+	it("should clone the params (array)", () => {
+		let params1 = [1, 2, 3, 4];
+
+		let ctx = new Context();
+		ctx.params = params1;
+
+		let params2 = [9, 8, 7, 6];
+
+		ctx.setParams(params2, true);
+		expect(ctx.params).not.toBe(params2);
+		expect(ctx.params).toEqual(params2);
+	});
+
+	it("should clone the params (null)", () => {
+		let params1 = [1, 2, 3, 4];
+
+		let ctx = new Context();
+		ctx.params = params1;
+
+		let params2 = null;
+
+		ctx.setParams(params2, true);
+		expect(ctx.params).toBeNull();
+	});
+
+	it("should clone the params (undefined)", () => {
+		let params1 = [1, 2, 3, 4];
+
+		let ctx = new Context();
+		ctx.params = params1;
+
+		let params2 = undefined;
+
+		ctx.setParams(params2, true);
+		expect(ctx.params).toBeUndefined();
+	});
+
+	it("should clone the params (number)", () => {
+		let params1 = [1, 2, 3, 4];
+
+		let ctx = new Context();
+		ctx.params = params1;
+
+		let params2 = 5;
+
+		ctx.setParams(params2, true);
+		expect(ctx.params).toBe(5);
+	});
+
+	it("should clone the params (string)", () => {
+		let params1 = [1, 2, 3, 4];
+
+		let ctx = new Context();
+		ctx.params = params1;
+
+		let params2 = "Hello";
+
+		ctx.setParams(params2, true);
+		expect(ctx.params).toBe("Hello");
 	});
 });
 

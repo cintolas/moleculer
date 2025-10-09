@@ -268,7 +268,7 @@ class Context {
 	 * @memberof Context
 	 */
 	setParams(newParams, cloning = false) {
-		if (cloning && newParams) this.params = Object.assign({}, newParams);
+		if (cloning && newParams) this.params = structuredClone(newParams);
 		else this.params = newParams;
 	}
 
