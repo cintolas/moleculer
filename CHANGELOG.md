@@ -3,6 +3,16 @@
 
 [**Migration guide from 0.14 to 0.15**](https://github.com/moleculerjs/moleculer/blob/next/docs/MIGRATION_GUIDE_0.15.md)
 
+# Changes since v0.15.0-beta1
+
+## Major Changes
+- **Minimum Node.js 20**: Updated minimum Node.js version from 18 to 20 for better performance and security
+- **Stream handling improvements**: Fixed multiple stream-related issues including proper closing of dangling streams and enhanced safety for streaming operations
+- **Enhanced TypeScript support**: Added comprehensive typing improvements for service lifecycle handlers, middleware functions, and broker error handlers
+- **CI/CD modernization**: Updated GitHub Actions to ubuntu-22.04, expanded Node.js testing matrix (20.x, 22.x, 24.x), and migrated to `docker compose` commands
+- **Registry improvements**: Added `stopDelay` option for graceful shutdown and `serviceChangedDebounceTime` for better service change handling
+- **Performance optimizations**: Fixed Redis transporter Promise library interference, improved cache key handling, and enhanced pending request cleanup
+
 # Breaking changes
 
 ## Minimum Node 20
