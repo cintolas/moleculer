@@ -13,7 +13,7 @@ const { isFunction, isString } = require("../utils");
 module.exports = function FallbackMiddleware(broker) {
 
 	function handleContextFallback(ctx, err) {
-		broker.logger.warn(`The '${ctx.action.name}' request is failed. Return fallback response.`, { requestID: ctx.requestID, err: err.message });
+		broker.logger.debug(`The '${ctx.action.name}' request is failed. Return fallback response.`, { requestID: ctx.requestID, err: err.message });
 		broker.metrics.increment(METRIC.MOLECULER_REQUEST_FALLBACK_TOTAL, { action: ctx.action.name });
 		ctx.fallbackResult = true;
 
@@ -43,7 +43,7 @@ module.exports = function FallbackMiddleware(broker) {
 						throw new MoleculerError(`The 'fallback' of '${action.name}' action is not a Function or valid method name: ${action.fallback}`);
 					}
 
-					svc.logger.warn(`The '${ctx.action.name}' request is failed. Return fallback response.`, { requestID: ctx.requestID, err: err.message });
+					svc.logger.debug(`The '${ctx.action.name}' request is failed. Return fallback response.`, { requestID: ctx.requestID, err: err.message });
 					broker.metrics.increment(METRIC.MOLECULER_REQUEST_FALLBACK_TOTAL, { service: svc.fullName, action: action.name });
 					ctx.fallbackResult = true;
 
