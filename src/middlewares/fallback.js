@@ -12,7 +12,7 @@ const { isFunction, isString } = require("../utils");
 
 module.exports = function FallbackMiddleware(broker) {
 	function handleContextFallback(ctx, err) {
-		broker.logger.warn(
+		broker.logger.debug(
 			`The '${ctx.action.name}' request is failed. Return fallback response.`,
 			{ requestID: ctx.requestID, err: err.message }
 		);
@@ -48,7 +48,7 @@ module.exports = function FallbackMiddleware(broker) {
 						);
 					}
 
-					svc.logger.warn(
+					svc.logger.debug(
 						`The '${ctx.action.name}' request is failed. Return fallback response.`,
 						{ requestID: ctx.requestID, err: err.message }
 					);
